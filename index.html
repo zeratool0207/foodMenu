@@ -6,14 +6,221 @@
     <title>foodMenu</title>
 </head>
 <body>
-    <script src="./plugins/jqueryui/js/jquery-ui.min.js"></script>
-    <script src="./plugins/moment/moment.min.js"></script>
-    <script src="./plugins/fullcalendar/js/fullcalendar.min.js"></script>
-    <script src="./js/plugins-init/fullcalendar-init.js"></script>
-    
-    <select>
+    <script src="./plugin/jquery.min.js"></script>
 
+    <script>
+        let recipeList = {
+                "categories": [
+                {
+                        id: 1,
+                        title:'미분류',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 2,
+                        title:'잡채',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 3,
+                        title:'불고기',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 4,
+                        title:'전',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 5,
+                        title:'죽',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 6,
+                        title:'볶음밥',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 7,
+                        title:'주먹밥',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 8,
+                        title:'김밥',
+                        use_yn: 'Y'
+                    },
+                    {
+                        id: 9,
+                        title:'간식',
+                        use_yn: 'Y'
+                    },
+                ],
+                "recipes": [
+                    // 2 - 잡채
+                    {
+                        id: 1,
+                        title: 'default 잡채',
+                        cate_id: 2,
+                        url: 'https://www.youtube.com/watch?v=fppre9NkfJA',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 2,
+                        title: '빨간 잡채',
+                        cate_id: 2,
+                        url: 'https://youtube.com/shorts/RL1FWdsBM7M?si=iExlaCNbp8ITPYlm',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 3,
+                        title: '중화 잡채 & 가지튀김',
+                        cate_id: 2,
+                        url: 'https://www.youtube.com/watch?v=7oRYOukOBo0',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 4,
+                        title: '고추 잡채',
+                        cate_id: 2,
+                        url: ' https://www.youtube.com/shorts/IoBzEBdDKvw',
+                        use_yn: 'Y',
+                    },
+
+                    // 3 - 불고기
+                    {
+                        id: 5,
+                        title: '간장불고기',
+                        cate_id: 3,
+                        url: 'https://www.youtube.com/watch?v=YV16QRDdQXE',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 6,
+                        title: '고추장불고기',
+                        cate_id: 3,
+                        url: 'https://www.youtube.com/watch?v=bQDQXAQxO6A',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 7,
+                        title: '뚝배기불고기',
+                        cate_id: 3,
+                        url: 'https://www.youtube.com/watch?v=aNBbfKxsQPQ',
+                        use_yn: 'Y',
+                    },
+                    // 전
+                    {
+                        id: 5,
+                        title: '돼지전',
+                        cate_id: 4,
+                        url: 'https://youtube.com/watch?v=T-Q8LUlkWj4&si=95rkh4oFqkPOCzQj',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 6,
+                        title: '꼬지전',
+                        cate_id: 4,
+                        url: 'https://youtube.com/shorts/xxf1LzoeybQ?si=cZDqhWINn7zCZmfp',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 7,
+                        title: '팽이버섯전',
+                        cate_id: 4,
+                        url: 'https://youtu.be/QQq4uib0IQ0?si=tQGAw13TcAOM0FqB',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 8,
+                        title: '시금치전',
+                        cate_id: 4,
+                        url: 'https://www.youtube.com/watch?v=HmuJzC6EXhk',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 9,
+                        title: '배추말이',
+                        cate_id: 4,
+                        url: 'https://www.youtube.com/watch?v=bY6z7SYNv4o',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 10,
+                        title: '고추전 깻잎전',
+                        cate_id: 4,
+                        url: 'https://www.youtube.com/watch?v=YwOdvDfFCPc',
+                        use_yn: 'Y',
+                    },
+                          // 6 - 죽
+                    {
+                        id: 11,
+                        title: '야채죽',
+                        cate_id: 5,
+                        url: 'https://www.youtube.com/shorts/GA83m5gJbUQ',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 12,
+                        title: '닭죽',
+                        cate_id: 5,
+                        url: 'https://youtube.com/shorts/ShucxEVxQLM?si=tdEi-aoul7CYLSSo',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 13,
+                        title: '참치죽',
+                        cate_id: 5,
+                        url: 'https://www.youtube.com/shorts/GA83m5gJbUQ',
+                        use_yn: 'Y',
+                    },
+                    {
+                        id: 14,
+                        title: '죽 15가지',
+                        cate_id: 5,
+                        url: 'https://youtube.com/watch?v=sSXjFF8xACA&si=kbfp7sOsp7T0_fa0',
+                        use_yn: 'Y',
+                    },
+                ],
+            }
+        $(function() {
+            // $('#firstSelect').empty();
+            $('btnSearch').disabled = true;
+            for ( var i = 0; i < recipeList.categories.length; i++) {
+                $('#firstSelect').append(`<option value=${recipeList.categories[i].id}>${recipeList.categories[i].title} </option>`);
+            }
+        })
+
+        function itemChange() {
+            let selectedItem = $('#firstSelect').val();
+            let selectedObj;
+            if (selectedItem != '선택') {
+                selectedObj = recipeList.recipes.filter(v => v.cate_id == selectedItem);
+                $('#secondSelect').empty();
+                $('#secondSelect').append(`<option>선택</option>`);
+                for ( var i = 0; i < selectedObj.length; i++ ) {
+                    $('#secondSelect').append(`<option value=${selectedObj[i].id}>${selectedObj[i].title} </option>`);
+                }
+            } else {
+                $('#secondSelect').empty();
+                $('#secondSelect').append(`<option>선택</option>`);
+            }
+        }
+    </script>
+
+    
+    <select id="firstSelect" onchange="itemChange()">
+        <option>선택</option>
     </select>
+
+    <select id="secondSelect">
+        <option>선택</option>
+    </select>
+
+    <button id="btnSearch">조회</button>
+
+    
 
 
 </body>
